@@ -1,0 +1,46 @@
+version: '2' # зарешал батя 😎
+
+services:
+  master: # мастер контейнер-дерижёр
+    build: .
+    container_name: 'master'
+    command: ["sleep", "infinity"]
+    networks:
+      - net # общая сеть 
+    depends_on: # все ноды работяги
+      - node1
+      - node2
+      - node3
+      - node4
+  
+  node1:
+    build: .
+    container_name: 'node1'
+    command: ["sleep", "infinity"]
+    networks:
+      - net # общая сеть 
+  
+  node2:
+    build: .
+    container_name: 'node2'
+    command: ["sleep", "infinity"]
+    networks:
+      - net # общая сеть 
+  
+  node3:
+    build: .
+    container_name: 'node3'
+    command: ["sleep", "infinity"]
+    networks:
+      - net # общая сеть 
+  
+  node4:  
+    build: .
+    container_name: 'node4'
+    command: ["sleep", "infinity"]
+    networks:
+      - net # общая сеть 
+
+networks:
+  net:
+    driver: bridge # Бридж драйвер чтобы коннектить контейнеры

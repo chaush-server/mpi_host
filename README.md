@@ -23,8 +23,8 @@
     service ssh start
     ifconfig
     ```
-    Pass for each slave: 123
-   
+### Send rsa public key for every node
+4. In master node, send public key for every slave (pass: 123)
     ```bash
     ssh-copy-id -i ~/.ssh/id_rsa.pub root@<slave_node_ip>
     ```
@@ -32,7 +32,7 @@
 ## Prepare `machinefile` on Master
 
 ### On Master Node
-4. Create and edit the machinefile to include the IP addresses of all slave nodes:
+5. Create and edit the machinefile to include the IP addresses of all slave nodes:
     Add the IP addresses of all the slave nodes line by line
     Save and exit the file
    
@@ -43,7 +43,7 @@
 ## Run MPI Jobs
 
 ### On Master Node
-5. Run MPI jobs using the configured machinefile:
+6. Run MPI jobs using the configured machinefile:
     ```bash
     ssh-agent
     mpiexec -n 4 -machinefile ~/machinefile python -m mpi4py ~/ring.py
